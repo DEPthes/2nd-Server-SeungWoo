@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
+// component 방식 사용
 // AOP는 Component 스캔으로 해도 되지만 Bean으로 직접 등록을 선호
 public class TimeTraceAop {
 
