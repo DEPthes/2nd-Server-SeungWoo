@@ -17,10 +17,17 @@
         </dependency>
 
 <!--    H2 데이터베이스  -->
+<!--        <dependency>-->
+<!--            <groupId>com.h2database</groupId>-->
+<!--            <artifactId>h2</artifactId>-->
+<!--            <version>1.4.200</version>-->
+<!--        </dependency>-->
+
+<!--    MySQL 데이터베이스-->
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.200</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.21</version>
         </dependency>
 
 <!--    JAXB 라이브러리 : java 9 이후라서.. -->

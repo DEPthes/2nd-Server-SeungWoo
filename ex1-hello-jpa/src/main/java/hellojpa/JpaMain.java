@@ -19,11 +19,11 @@ public class JpaMain {
 
         try{
             // 회원 등록
-//            Member member = new Member();
-//            member.setId(2L);
-//            member.setName("HelloB");
+            Member member = new Member();
+            member.setId(1L);
+            member.setName("HelloA");
             
-//            em.persist(member); // member 저장
+            em.persist(member); // member 저장
 
             // 회원 조회
 //            Member findMember = em.find(Member.class, 1L);
@@ -35,14 +35,14 @@ public class JpaMain {
 //          em.remove(findMember); // 찾은 아이를 remove에 넣어주면 됨
 
             // JPQL
-            List<Member> result = em.createQuery("select m from Member as m", Member.class)
-                    .setFirstResult(5)
-                    .setMaxResults(8)
-                    .getResultList();
-
-            for(Member member : result){
-                System.out.println("member.name = " + member.getName());
-            }
+//            List<Member> result = em.createQuery("select m from Member as m", Member.class)
+//                    .setFirstResult(5)
+//                    .setMaxResults(8)
+//                    .getResultList();
+//
+//            for(Member member : result){
+//                System.out.println("member.name = " + member.getName());
+//            }
 
             tx.commit(); // 트랜잭션 커밋
         }catch(Exception e){
