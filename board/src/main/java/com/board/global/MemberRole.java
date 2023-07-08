@@ -1,12 +1,12 @@
 package com.board.global;
 
-    public enum UserRole {
-        ROLE_USER("ROLE_USER"),
+    public enum MemberRole {
+        ROLE_MEMBER("ROLE_MEMBER"),
         ROLE_ADMIN("ROLE_ADMIN");
 
         String role;
 
-        UserRole(String role) {
+        MemberRole(String role) {
             this.role = role;
         }
 
