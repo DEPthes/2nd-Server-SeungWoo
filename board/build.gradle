@@ -27,10 +27,10 @@ dependencies {
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	// MySQL Connector/J 의존성 추가
-	implementation 'mysql:mysql-connector-java:8.0.21'
+	implementation 'mysql:mysql-connector-java:8.0.33'
 	// MySQL Connector/J 드라이버
 
-	implementation files('libs/mysql-connector-java-8.0.21.jar')
+	implementation files('libs/mysql-connector-java-8.0.33.jar')
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
