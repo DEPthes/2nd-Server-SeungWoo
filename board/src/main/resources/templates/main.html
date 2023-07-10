@@ -1,0 +1,46 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>main</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--session 값 확인: <p th:text="${session.loginEmail}"></p>-->
+<!--<a href="/member/update">내 정보 수정하기</a>-->
+<!--<a href="/member/logout">로그아웃</a>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Main</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    a {
+      display: inline-block;
+      margin-right: 10px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    a:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+<p>Session 값 확인: <span th:text="${session.loginEmail}"></span></p>
+<a href="/member/update">내 정보 수정하기</a>
+<a href="/member/logout">로그아웃</a>
+</body>
+</html>

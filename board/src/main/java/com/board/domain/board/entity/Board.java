@@ -32,29 +32,6 @@ public class Board extends BaseEntity {
     @Column
     private int boardHits;
 
-//    public static Board toSaveEntity(BoardDto boardDto){
-//        Board board = new Board();
-//        // 나중에 빌더 패턴으로 바꾸는게 좋을듯
-//        board.setBoardWriter(boardDto.getBoardWriter());
-//        board.setBoardPass(boardDto.getBoardPass());
-//        board.setBoardTitle(boardDto.getBoardTitle());
-//        board.setBoardContents(boardDto.getBoardContents());
-//        board.setBoardHits(0);
-//        return board;
-//    }
-//
-//    public static Board toUpdateEntity(BoardDto boardDto) {
-//        Board board = new Board();
-//        // 나중에 빌더 패턴으로 바꾸는게 좋을듯
-//        board.setId(boardDto.getId());
-//        board.setBoardWriter(boardDto.getBoardWriter());
-//        board.setBoardPass(boardDto.getBoardPass());
-//        board.setBoardTitle(boardDto.getBoardTitle());
-//        board.setBoardContents(boardDto.getBoardContents());
-//        board.setBoardHits(boardDto.getBoardHits());
-//        return board;
-//    }
-
     public static Board toEntity(BoardDto boardDto){
         return Board.builder()
                 .id(boardDto.getId())

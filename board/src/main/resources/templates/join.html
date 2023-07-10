@@ -1,0 +1,73 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>join</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form action="/member/join" method="post">-->
+<!--  이메일: <input type="text" name="email" id="email" onblur="emailCheck()">-->
+<!--  <br>-->
+<!--  <p id="check-result"></p>-->
+<!--  비밀번호: <input type="password" name="password">-->
+<!--  <br>-->
+<!--  이름: <input type="text" name="name">-->
+<!--  <br>-->
+<!--  <input type="submit" value="회원가입">-->
+<!--</form>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Join</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    form {
+      width: 300px;
+      margin: 0 auto;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 5px;
+      margin-top: 5px;
+    }
+    input[type="submit"] {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    #check-result {
+      color: red;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+<form action="/member/join" method="post">
+  <label for="email">이메일:</label>
+  <input type="text" name="email" id="email" onblur="emailCheck()">
+  <p id="check-result"></p>
+  <label for="password">비밀번호:</label>
+  <input type="password" name="password" id="password">
+  <label for="name">이름:</label>
+  <input type="text" name="name" id="name">
+  <input type="submit" value="회원가입">
+</form>
+</body>
+</html>
