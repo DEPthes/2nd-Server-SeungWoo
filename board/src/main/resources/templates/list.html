@@ -1,26 +1,82 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>list</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<table>-->
+<!--    <tr>-->
+<!--        <th>id</th>-->
+<!--        <th>title</th>-->
+<!--&lt;!&ndash;        <th>title(||쓰지 않은 경우)</th>&ndash;&gt;-->
+<!--        <th>writer</th>-->
+<!--        <th>date</th>-->
+<!--        <th>hits</th>-->
+<!--    </tr>-->
+<!--&lt;!&ndash;    controller에서 model에 boardList라는 이름으로 담았음 addAttribute() &ndash;&gt;-->
+<!--    <tr th:each="board: ${boardList}">-->
+<!--        <td th:text="${board.id}"></td>-->
+<!--        <td><a th:href="@{|/board/${board.id}|}" th:text="${board.boardTitle}"></a></td>-->
+<!--&lt;!&ndash;        <td><a th:href="@{/board/${board.id}}" th:text="${board.boardTitle}"></a></td>&ndash;&gt;-->
+<!--        <td th:text="${board.boardWriter}"></td>-->
+<!--        <td th:text="*{#temporals.format(board.boardCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>-->
+<!--        <td th:text="${board.boardHits}"></td>-->
+<!--    </tr>-->
+<!--</table>-->
+<!--</body>-->
+<!--</html>-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>list</title>
+    <title>Post List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
+<h1>Post List</h1>
 <table>
     <tr>
-        <th>id</th>
-        <th>title</th>
-<!--        <th>title(||쓰지 않은 경우)</th>-->
-        <th>writer</th>
-        <th>date</th>
-        <th>hits</th>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Writer</th>
+        <th>Date</th>
+        <th>Hits</th>
     </tr>
-<!--    controller에서 model에 boardList라는 이름으로 담았음 addAttribute() -->
     <tr th:each="board: ${boardList}">
         <td th:text="${board.id}"></td>
         <td><a th:href="@{|/board/${board.id}|}" th:text="${board.boardTitle}"></a></td>
-<!--        <td><a th:href="@{/board/${board.id}}" th:text="${board.boardTitle}"></a></td>-->
         <td th:text="${board.boardWriter}"></td>
-        <td th:text="*{#temporals.format(board.boardCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td th:text="${#temporals.format(board.boardCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
         <td th:text="${board.boardHits}"></td>
     </tr>
 </table>

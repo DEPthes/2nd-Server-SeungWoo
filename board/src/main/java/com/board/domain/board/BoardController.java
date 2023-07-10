@@ -22,7 +22,6 @@ public class BoardController {
 
     @PostMapping("/save")
     public String save(@ModelAttribute BoardDto boardDto){
-        System.out.println("boardDto = " + boardDto);
         boardService.save(boardDto);
         return "index";
     }

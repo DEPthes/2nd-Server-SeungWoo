@@ -1,28 +1,89 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>update</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form action="/board/update" method="post" name="updateForm">-->
+<!--  <input type="hidden" name="id" th:value="${boardUpdate.id}">-->
+<!--  writer: <input type="text" name="boardWriter" th:value="${boardUpdate.boardWriter}" readonly> <br>-->
+<!--  pass: <input type="text" name="boardPass" id="boardPass"> <br>-->
+<!--  title: <input type="text" name="boardTitle" th:value="${boardUpdate.boardTitle}"> <br>-->
+<!--  contents: <textarea name="boardContents" cols="30" rows="10" th:text="${boardUpdate.boardContents}"></textarea> <br>-->
+<!--  <input type="hidden" name="boardHits" th:value="${boardUpdate.boardHits}">-->
+<!--  <input type="button" value="글수정" onclick="boardUpdate()">-->
+<!--</form>-->
+<!--<script th:inline="javascript">-->
+<!--  const boardUpdate = () => {-->
+<!--    const pass = [[${boardUpdate.boardPass}]]; &lt;!&ndash; db에서 가져온 비밀번호 &ndash;&gt;-->
+<!--    const inputPass = document.getElementById("boardPass").value;-->
+<!--    if (pass == inputPass) {-->
+<!--      document.updateForm.submit();-->
+<!--    } else {-->
+<!--      alert("비밀번호가 일치하지 않습니다!");-->
+<!--    }-->
+<!--  }-->
+<!--</script>-->
+<!--</body>-->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>update</title>
+  <title>Update Post</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    form {
+      margin-top: 20px;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    input[type="button"] {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    input[type="button"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
 <form action="/board/update" method="post" name="updateForm">
   <input type="hidden" name="id" th:value="${boardUpdate.id}">
-  writer: <input type="text" name="boardWriter" th:value="${boardUpdate.boardWriter}" readonly> <br>
-  pass: <input type="text" name="boardPass" id="boardPass"> <br>
-  title: <input type="text" name="boardTitle" th:value="${boardUpdate.boardTitle}"> <br>
-  contents: <textarea name="boardContents" cols="30" rows="10" th:text="${boardUpdate.boardContents}"></textarea> <br>
+  <label>Writer:</label>
+  <input type="text" name="boardWriter" th:value="${boardUpdate.boardWriter}" readonly><br>
+  <label>Pass:</label>
+  <input type="text" name="boardPass" id="boardPass"><br>
+  <label>Title:</label>
+  <input type="text" name="boardTitle" th:value="${boardUpdate.boardTitle}"><br>
+  <label>Contents:</label>
+  <textarea name="boardContents" cols="30" rows="10" th:text="${boardUpdate.boardContents}"></textarea><br>
   <input type="hidden" name="boardHits" th:value="${boardUpdate.boardHits}">
   <input type="button" value="글수정" onclick="boardUpdate()">
 </form>
 <script th:inline="javascript">
-  const boardUpdate = () => {
-    const pass = [[${boardUpdate.boardPass}]]; <!-- db에서 가져온 비밀번호 -->
-    const inputPass = document.getElementById("boardPass").value;
-    if (pass == inputPass) {
-      document.updateForm.submit();
-    } else {
-      alert("비밀번호가 일치하지 않습니다!");
+    const boardUpdate = () => {
+        const pass = [[${boardUpdate.boardPass}]]; // db에서 가져온 비밀번호
+        const inputPass = document.getElementById("boardPass").value;
+        if (pass === inputPass) {
+            document.updateForm.submit();
+        } else {
+            alert("비밀번호가 일치하지 않습니다!");
+        }
     }
-  }
 </script>
 </body>
+</html>

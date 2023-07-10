@@ -1,8 +1,7 @@
 package com.board.domain.board.dto;
 
-import com.board.domain.board.entity.BoardEntity;
+import com.board.domain.board.entity.Board;
 import lombok.*;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
@@ -11,6 +10,7 @@ import java.time.LocalDateTime;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class BoardDto {
 
     private Long id;
@@ -22,17 +22,30 @@ public class BoardDto {
     private LocalDateTime boardCreatedTime;
     private LocalDateTime boardUpdatedTime;
 
-    public static BoardDto toBoardDto(BoardEntity boardEntity){
-        BoardDto boardDto = new BoardDto();
-        boardDto.setId(boardEntity.getId());
-        boardDto.setBoardWriter(boardEntity.getBoardWriter());
-        boardDto.setBoardPass(boardEntity.getBoardPass());
-        boardDto.setBoardTitle(boardEntity.getBoardTitle());
-        boardDto.setBoardContents(boardEntity.getBoardContents());
-        boardDto.setBoardHits(boardEntity.getBoardHits());
-        boardDto.setBoardCreatedTime(boardEntity.getCreatedTime());
-        boardDto.setBoardUpdatedTime(boardEntity.getUpdatedTime());
-        return boardDto;
+//    public static BoardDto toBoardDto(Board board){
+//        BoardDto boardDto = new BoardDto();
+//        boardDto.setId(board.getId());
+//        boardDto.setBoardWriter(board.getBoardWriter());
+//        boardDto.setBoardPass(board.getBoardPass());
+//        boardDto.setBoardTitle(board.getBoardTitle());
+//        boardDto.setBoardContents(board.getBoardContents());
+//        boardDto.setBoardHits(board.getBoardHits());
+//        boardDto.setBoardCreatedTime(board.getCreatedTime());
+//        boardDto.setBoardUpdatedTime(board.getUpdatedTime());
+//        return boardDto;
+//    }
+
+    public static BoardDto toBoardDto(Board board){
+        return BoardDto.builder()
+                .id(board.getId())
+                .boardWriter(board.getBoardWriter())
+                .boardPass(board.getBoardPass())
+                .boardTitle(board.getBoardTitle())
+                .boardContents(board.getBoardContents())
+                .boardHits(board.getBoardHits())
+                .boardCreatedTime(board.getCreatedTime())
+                .boardUpdatedTime(board.getUpdatedTime())
+                .build();
     }
 
 }
