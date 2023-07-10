@@ -21,14 +21,15 @@ public class BoardController {
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute BoardDto boardDto){
+    public String save(@ModelAttribute BoardDto boardDto, Model model){
         boardService.save(boardDto);
-        return "index";
+        List<BoardDto> boardDtoList = boardService.findAll();
+        model.addAttribute("boardList",boardDtoList);
+        return "list";
     }
 
     @GetMapping("/")
     public String findAll(Model model){ // 데이터를 가져와야 한다 ! -> model 객체 사용
-        // 동작 흐름: DB에서 전체 게시글 데이터를 가져와서 list.html에 보여준다.
         List<BoardDto> boardDtoList = boardService.findAll();
         model.addAttribute("boardList", boardDtoList);
         return "list";

@@ -2,9 +2,11 @@ package com.board.domain.member;
 
 import com.board.domain.member.dto.MemberDto;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -20,11 +22,14 @@ public class MemberController {
     }
 
     @PostMapping("/join")
-    // requestparam 말고 다른 방법 있는듯 !
-    public String join(@ModelAttribute MemberDto memberDto){
+    public String join(@Valid @ModelAttribute MemberDto memberDto, BindingResult bindingResult){
+        if(bindingResult.hasErrors()) {
+            return "join";
+        }
         memberService.join(memberDto);
         return "login";
     }
+
 
     @GetMapping("/login")
     public String login(){
