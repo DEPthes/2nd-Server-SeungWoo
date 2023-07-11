@@ -20,7 +20,7 @@ public class Board extends BaseEntity {
     @Column(length = 20, nullable = false)
     private String boardWriter;
 
-    @Column
+    @Column(length = 8, nullable = false)
     private String boardPass;
 
     @Column

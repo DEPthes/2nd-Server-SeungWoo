@@ -36,7 +36,7 @@
 </head>
 <body>
 <h1>Post List</h1>
-<p><a href="/board/save">Create a Post</a></p>
+<p><a href="/board/save">글 쓰기</a></p>
 
 <p>이메일 : <span th:text="${session.loginEmail}"></span></p>
 <p>이름 : <span th:text="${session.memberName}"></span></p>
@@ -44,10 +44,10 @@
 <table>
     <tr>
         <th>ID</th>
-        <th>Title</th>
-        <th>Writer</th>
-        <th>Date</th>
-        <th>Hits</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>글 생성 시간</th>
+        <th>조회 수</th>
     </tr>
     <tr th:each="board: ${boardList}">
         <td th:text="${board.id}"></td>

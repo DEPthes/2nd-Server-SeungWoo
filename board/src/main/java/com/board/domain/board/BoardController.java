@@ -29,7 +29,7 @@ public class BoardController {
     }
 
     @GetMapping("/")
-    public String findAll(Model model){ // 데이터를 가져와야 한다 ! -> model 객체 사용
+    public String findAll(Model model){
         List<BoardDto> boardDtoList = boardService.findAll();
         model.addAttribute("boardList", boardDtoList);
         return "list";
@@ -37,10 +37,6 @@ public class BoardController {
 
     @GetMapping("/{id}")
     public String findById(@PathVariable Long id, Model model){
-        /*
-            1. 해당 게시글 조회수 하나 올리고
-            2. 게시글 데이터 가져와서 detail.html에 출력
-         */
         boardService.updateHits(id);
         BoardDto boardDto = boardService.findById(id);
         model.addAttribute("board", boardDto);

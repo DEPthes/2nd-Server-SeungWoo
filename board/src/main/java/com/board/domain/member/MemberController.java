@@ -31,29 +31,17 @@ public class MemberController {
     @PostMapping("/join")
     public String join(@Valid @ModelAttribute MemberDto memberDto, BindingResult bindingResult){
         if(bindingResult.hasErrors()) {
+            System.out.println("회원 가입 형식이 올바르지 않습니다.");
             return "join";
         }
         memberService.join(memberDto);
         return "login";
     }
 
-
     @GetMapping("/login")
     public String login(){
         return "login";
     }
-
-//    @PostMapping("/login")
-//    public String login(@ModelAttribute MemberDto memberDto, HttpSession session){ // 세션 사용
-//        MemberDto loginResult = memberService.login(memberDto);
-//        if(loginResult != null){
-//            session.setAttribute("loginEmail", loginResult.getEmail());
-////            session.setAttribute("memberName", loginResult.getName());
-//            return "main";
-//        } else{
-//            return "login";
-//        }
-//    }
 
     @PostMapping("/login")
     public String login(@ModelAttribute MemberDto memberDto, HttpSession session, Model model){ // 세션 사용
@@ -66,6 +54,7 @@ public class MemberController {
             model.addAttribute("boardList",boardDtoList);
             return "list";
         } else{
+            System.out.println("아이디 혹은 비밀번호를 잘못 입력했습니다.");
             return "login";
         }
     }
