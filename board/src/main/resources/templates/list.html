@@ -43,6 +43,7 @@
 
 <table>
     <tr>
+        <th>게시글 보기</th>
         <th>ID</th>
         <th>제목</th>
         <th>작성자</th>
@@ -50,8 +51,9 @@
         <th>조회 수</th>
     </tr>
     <tr th:each="board: ${boardList}">
+        <td><a th:href="@{|/board/${board.id}|}">게시글 상세 정보</a></td>
         <td th:text="${board.id}"></td>
-        <td><a th:href="@{|/board/${board.id}|}" th:text="${board.boardTitle}"></a></td>
+        <td th:text="${board.boardTitle}"></td>
         <td th:text="${board.boardWriter}"></td>
         <td th:text="${#temporals.format((board.boardUpdatedTime != null ? board.boardUpdatedTime : board.boardCreatedTime), 'yyyy-MM-dd HH:mm:ss')}"></td>
         <td th:text="${board.boardHits}"></td>

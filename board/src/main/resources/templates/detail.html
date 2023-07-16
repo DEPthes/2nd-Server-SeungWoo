@@ -66,13 +66,13 @@
     <td th:text="${board.boardContents}"></td>
   </tr>
 </table>
-<button onclick="postList()">목록</button>
+<button onclick="postList()">게시글 목록</button>
 <button onclick="postUpdate()">수정</button>
 <button onclick="postDelete()">삭제</button>
 </body>
 <script th:inline="javascript">
     const postList = () => {
-        location.href = "/board/";
+        location.href = "/board/paging?page="+[[${page}]];
     }
     const postUpdate = () => {
         const id = [[${board.id}]];
