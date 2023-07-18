@@ -64,5 +64,9 @@ public class MemberController {
         return "index";
     }
 
-
+    @PostMapping("email-check")
+    public @ResponseBody String emailCheck(@RequestParam("email") String email){
+        String result = memberService.emailCheck(email);
+        return result;
+    }
 }

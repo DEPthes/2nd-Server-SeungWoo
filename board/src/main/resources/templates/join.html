@@ -48,7 +48,7 @@
 <form action="/member/join" method="post">
   <label for="email">이메일:</label>
   <input type="text" name="email" id="email" onkeyup="emailCheck()">
-  <p id="check-result"></p>
+  <span id="check-result"></span>
   <label for="password">비밀번호:</label>
   <input type="password" name="password" id="password">
   <label for="name">이름:</label>
@@ -59,6 +59,7 @@
 <script th:inline="javascript">
   const emailCheck = () => {
       const email = document.getElementById("email").value;
+      const checkResult = document.getElementById("check-result");
 
       $.ajax({
         type: "post",
@@ -68,6 +69,12 @@
         },
         success: function (res){
             console.log("성공 ", res);
+            if(res == "ok"){
+              checkResult.innerHTML = "사용 가능한 이메일입니다.";
+            } else{
+              checkResult.innerHTML = "사용 중인 이메일입니다."
+            }
+
         },
         error: function (res){
             console.log("에러 ", err);

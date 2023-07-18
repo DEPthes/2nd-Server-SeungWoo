@@ -33,4 +33,14 @@ public class MemberService {
             return null;
         }
     }
+
+    public String emailCheck(String email) {
+        Optional<Member> byEmail = memberRepository.findByEmail(email);
+        if(byEmail.isPresent()){
+            return null;
+        } else {
+            return "ok";
+        }
+
+    }
 }
