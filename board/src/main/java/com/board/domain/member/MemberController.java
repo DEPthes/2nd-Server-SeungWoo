@@ -6,6 +6,9 @@ import com.board.domain.member.dto.MemberDto;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -43,7 +46,7 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute MemberDto memberDto, HttpSession session, Model model){ // 세션 사용
+    public String login(@ModelAttribute MemberDto memberDto, HttpSession session, @PageableDefault(page = 1) Pageable pageable, Model model){ // 세션 사용
         MemberDto loginResult = memberService.login(memberDto);
         if(loginResult != null){
             session.setAttribute("loginEmail", loginResult.getEmail());
@@ -51,7 +54,17 @@ public class MemberController {
 
             List<BoardDto> boardDtoList = boardService.findAll();
             model.addAttribute("boardList",boardDtoList);
-            return "list";
+
+            Page<BoardDto> boardList = boardService.paging(pageable);
+            int blockLimit = 3;
+            int startPage = (((int)(Math.ceil((double)pageable.getPageNumber() / blockLimit))) - 1) * blockLimit + 1; // 1 4 7 10 ~~
+            int endPage = ((startPage + blockLimit - 1) < boardList.getTotalPages()) ? startPage + blockLimit - 1 : boardList.getTotalPages();
+
+            model.addAttribute("boardList", boardList);
+            model.addAttribute("startPage", startPage);
+            model.addAttribute("endPage", endPage);
+
+            return "paging";
         } else{
             System.out.println("아이디 혹은 비밀번호를 잘못 입력했습니다.");
             return "login";

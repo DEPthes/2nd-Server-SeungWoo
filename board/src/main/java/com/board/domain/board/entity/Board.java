@@ -5,6 +5,9 @@ import com.board.domain.board.dto.BoardDto;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
