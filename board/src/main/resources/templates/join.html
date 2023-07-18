@@ -39,11 +39,15 @@
       margin-top: 5px;
     }
   </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+          integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+          crossorigin="anonymous">
+  </script>
 </head>
 <body>
 <form action="/member/join" method="post">
   <label for="email">이메일:</label>
-  <input type="text" name="email" id="email" onblur="emailCheck()">
+  <input type="text" name="email" id="email" onkeyup="emailCheck()">
   <p id="check-result"></p>
   <label for="password">비밀번호:</label>
   <input type="password" name="password" id="password">
@@ -52,4 +56,23 @@
   <input type="submit" value="회원가입">
 </form>
 </body>
+<script th:inline="javascript">
+  const emailCheck = () => {
+      const email = document.getElementById("email").value;
+
+      $.ajax({
+        type: "post",
+        url: "email-check",
+        data: {
+          "email": email
+        },
+        success: function (res){
+            console.log("성공 ", res);
+        },
+        error: function (res){
+            console.log("에러 ", err);
+        }
+      })
+  }
+</script>
 </html>
