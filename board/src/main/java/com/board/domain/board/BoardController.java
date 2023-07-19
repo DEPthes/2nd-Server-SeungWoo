@@ -68,7 +68,6 @@ public class BoardController {
         return "redirect:/board/";
     }
 
-    // /board/paging?page=1
     @GetMapping("/paging")
     public String paging(@PageableDefault(page = 1) Pageable pageable, Model model){
         Page<BoardDto> boardList = boardService.paging(pageable);
@@ -82,7 +81,5 @@ public class BoardController {
 
         return "paging";
     }
-
-
 
 }

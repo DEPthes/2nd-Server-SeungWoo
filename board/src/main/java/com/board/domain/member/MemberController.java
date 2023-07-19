@@ -22,7 +22,6 @@ import java.util.List;
 public class MemberController {
 
     private final MemberService memberService;
-    //
     private final BoardService boardService;
 
     @GetMapping("/join")

@@ -43,16 +43,6 @@ public class BoardService {
 
     }
 
-//    public BoardDto findById(Long id) {
-//        Optional<Board> optionalBoardEntity = boardRepository.findById(id);
-//        if(optionalBoardEntity.isPresent()){
-//            Board board = optionalBoardEntity.get();
-//            BoardDto boardDto = BoardDto.toBoardDto(board);
-//            return boardDto;
-//        }else
-//            return null;
-//    }
-
     public BoardDto findById(Long id) { // jpql
         Board board = entityManager
                 .createQuery("SELECT b FROM Board b WHERE b.id = :id", Board.class)
@@ -79,10 +69,8 @@ public class BoardService {
 
     public Page<BoardDto> paging(Pageable pageable) {
         int page = pageable.getPageNumber() - 1;
-        int pageLimit = 3; // 한 페이지에 몇 개?
-        // 한 페이지 당 글 3개, id 기준으로 내림차순 정렬
+        int pageLimit = 3;
         Page<Board> boards = boardRepository.findAll(PageRequest.of(page, pageLimit, Sort.by(Sort.Direction.DESC, "id")));
-        // 목록: id, writer, title, hits, createdTime
         Page<BoardDto> boardDtos = boards.map(board -> new BoardDto(board.getId(), board.getBoardWriter(), board.getBoardTitle(), board.getBoardHits(), board.getCreatedTime()));
         return boardDtos;
     }
